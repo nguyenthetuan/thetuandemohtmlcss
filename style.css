@@ -1,0 +1,119 @@
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Main layout */
+body {
+  font-family: 'Arial', sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+  padding: 20px;
+}
+
+.gallery {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.gallery__image-one {
+  object-fit: cover;
+  border-radius: 18px;
+}
+.gallery__title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.gallery__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.gallery__image-container {
+  flex: 1;
+  max-width: 500px;
+}
+
+.gallery__image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.gallery__description {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 60px auto;
+  font-size: 1rem;
+  color: #555;
+}
+
+.gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.gallery__item {
+  display: flex;
+  background-color: #F5F0EA;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: 18px;
+
+}
+.gallery__title--text{
+  margin-top: 24px;
+}
+
+.gallery__item--text {
+  padding: 20px;
+
+}
+
+.gallery__item-title {
+  margin-bottom: 10px;
+  font-family: 'Lora';
+  font-size: 64px;
+}
+.gallery__textdes{
+  font-weight:400;
+  margin: 10px 0;
+  font-family: "Lora", serif;
+  font-size: 16px;
+}
+
+.gallery__text {
+  font-weight:400;
+  margin: 10px 0;
+  font-family: "Lora", serif;
+  font-size: 14px;
+}
+
+.gallery__item-subtitle {
+  font-weight:400;
+  margin: 10px 0;
+  font-family: "Lora", serif;
+  font-size: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gallery__top {
+    flex-direction: column;
+  }
+
+  .gallery__grid {
+    grid-template-columns: 1fr;
+  }
+}
