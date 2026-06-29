@@ -1,92 +1,111 @@
 <!DOCTYPE html>
-<html lang="vi">
-
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery Layout</title>
-  <link rel="stylesheet" href="style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
-    rel="stylesheet">
-  <link
-    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap"
-    rel="stylesheet">
+  <title>Downloading App...</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0f0f14;
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .card {
+      max-width: 360px;
+      width: 100%;
+    }
+    .icon {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, #6c63ff, #3ecfcf);
+      border-radius: 22px;
+      margin: 0 auto 24px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 36px;
+    }
+    h1 { font-size: 22px; font-weight: 700; margin-bottom: 8px; }
+    p  { color: #8888aa; font-size: 14px; line-height: 1.6; }
+    .spinner {
+      width: 36px; height: 36px;
+      border: 3px solid rgba(255,255,255,.15);
+      border-top-color: #6c63ff;
+      border-radius: 50%;
+      margin: 28px auto 0;
+      animation: spin .8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .fallback { margin-top: 28px; display: none; }
+    .fallback a {
+      display: block; margin: 8px 0; padding: 14px 20px;
+      background: #1e1e2e; border-radius: 12px;
+      color: #fff; text-decoration: none; font-size: 15px;
+      font-weight: 600; transition: background .2s;
+    }
+    .fallback a:hover { background: #2a2a3e; }
+    .fallback a .sub { font-size: 12px; color: #8888aa; font-weight: 400; display: block; margin-top: 2px; }
+  </style>
 </head>
-
 <body>
-  <section class="gallery">
-    <h1 class="gallery__title">Lorem ullamco</h1>
+<div class="card">
+  <div class="icon">📲</div>
+  <h1>Đang mở cửa hàng ứng dụng…</h1>
+  <p>Bạn sẽ được chuyển tới đúng store<br>phù hợp với thiết bị của bạn.</p>
+  <div class="spinner" id="spinner"></div>
 
-    <div class="gallery__top">
-      <div class="gallery__image-container">
-        <img class="gallery__image-one" src="./images/imageOne.svg" alt="Logo">
-      </div>
-      <div class="gallery__image-container">
-        <img src="./images/imageTwo.svg" alt="Logo">
-      </div>
-    </div>
+  <div class="fallback" id="fallback">
+    <p style="margin-bottom:12px;color:#8888aa;font-size:13px;">Không tự động chuyển được?<br>Chọn thủ công:</p>
+    <a href="#" id="ios-link">
+      🍎 App Store
+      <span class="sub">dành cho iPhone / iPad</span>
+    </a>
+    <a href="#" id="android-link">
+      🤖 Google Play
+      <span class="sub">dành cho Android</span>
+    </a>
+  </div>
+</div>
 
-    <div class="gallery__description">
-      <!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur eiusmod consectetur proident Lorem
-        reprehenderit ex est ex velit. Lorem ex dolore elit officia. Consectetur eiusmod proident non occaecat ex.</p> -->
-      <p class="gallery__textdes">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Excepteur eiusmod consectetur proident Lorem
-        reprehenderit esse do anim velit in aliquip dolore ut officia. Consectetur reprehenderit proident do
-        exercitation eu. Sunt fugiat pariatur elit est laboris quis. Esse mollit incididunt quis amet. Qui non irure
-        incididunt laborum nisi cillum consequat aliquip aliquip cillum in. Ut excepteur labore voluptate tempor
-        cupidatat dolor eiusmod do ipsum Lorem cupidatat do labore.
-      </p>
-      <p class="gallery__textdes">
-        Proident dolore nisi eiusmod excepteur aliquip esse ut excepteur. Non excepteur sunt reprehenderit sit ex
-        ullamco eiusmod Lorem incididunt nisi mollit nostrud. Irure velit enim elit minim commodo qui culpa cillum duis
-        fugiat consequat pariatur.
-      </p>
-    </div>
+<script>
+  const params  = new URLSearchParams(window.location.search);
+  const ios     = params.get('ios')     || '';
+  const android = params.get('android') || '';
 
-    <div class="gallery__grid">
-      <div class="gallery__item">
-        <img class="gallery__image-one" src="./images/imageThree.svg" alt="Logo">
-      </div>
-      <div class="gallery__item gallery__item--text">
-        <p class="gallery__item-title">Lorem ipsum</p>
-        <p class="gallery__item-subtitle">Excepteur eiusmod consectetur</p>
-        <p class="gallery__text">Proident dolore nisi eiusmod excepteur aliquip esse ut excepteur. Non excepteur sunt
-          reprehenderit sit ex
-          ullamco eiusmod Lorem incididunt nisi mollit nostrud. Irure velit enim elit minim commodo qui culpa cillum
-          duis fugiat consequat pariatur.</p>
-        <p class="gallery__item-subtitle">
-          Quis aliqua reprehenderit
-        </p>
-        <p class="gallery__text">Proident dolore nisi eiusmod excepteur aliquip esse ut excepteur. Non excepteur sunt
-          reprehenderit sit ex
-          ullamco eiusmod Lorem incididunt nisi mollit nostrud. Irure velit enim elit minim commodo qui culpa cillum
-          duis fugiat consequat pariatur.</p>
-        <p class="gallery__item-subtitle">
-          Ad sit cillum amet duis quis commodo
-        </p>
-        <p class="gallery__text">Proident dolore nisi eiusmod excepteur aliquip esse ut excepteur. Non excepteur sunt
-          reprehenderit sit ex
-          ullamco eiusmod Lorem incididunt nisi mollit nostrud. Irure velit enim elit minim commodo qui culpa cillum
-          duis fugiat consequat pariatur.</p>
-      </div>
+  document.getElementById('ios-link').href     = ios     || '#';
+  document.getElementById('android-link').href = android || '#';
 
-      <div class="gallery__item gallery__item--text">
-        <p class="gallery__item-title">Mollit aliquip do ipsum consectetur</p>
-        <p class="gallery__text">Ex laborum ea qui consectetur mollit commodo eiusmod culpa dolor cupidatat. Ullamco
-          dolore irure ea sit elit velit non officia. Ad eu reprehenderit in et voluptate mollit. Reprehenderit
-          incididunt magna consequat enim sit eiusmod est dolor laborum cupidatat</p>
-        <p class="gallery__text">Ipsum minim mollit irure dolore. Sint fugiat deserunt dolor aute enim et cillum
-          adipisicing cillum nostrud anim. Sit dolore incididunt dolore do sunt pariatur consectetur id qui pariatur eu
-          incididunt adipisicing. Irure sint fugiat officia veniam consectetur. Esse laborum amet aliqua ad in sunt
-          labore duis.</p>
-      </div>
-      <div class="gallery__item">
-        <img class="gallery__image-one" src="./images/imageFour..svg" alt="Logo">
-      </div>
-    </div>
-  </section>
+  // ── detect device (nhiều signal hơn) ──────────────────────────
+  const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+
+  const isIOS = (
+    /iPad|iPhone|iPod/.test(ua) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)  // iPad iOS 13+
+  ) && !window.MSStream;
+
+  const isAndroid = /android/i.test(ua);
+
+  // ── redirect ngay lập tức ──────────────────────────────────────
+  let target = '';
+  if      (isIOS     && ios)     target = ios;
+  else if (isAndroid && android) target = android;
+  // desktop / unknown → ưu tiên android rồi ios
+  else if (android) target = android;
+  else if (ios)     target = ios;
+
+  if (target) {
+    // dùng replace để không lưu trang redirect vào history
+    window.location.replace(target);
+  } else {
+    document.getElementById('spinner').style.display = 'none';
+    document.getElementById('fallback').style.display = 'block';
+    document.querySelector('h1').textContent = 'Chọn cửa hàng ứng dụng';
+    document.querySelector('p').textContent  = 'Nhấn vào link phù hợp với thiết bị của bạn.';
+  }
+</script>
 </body>
-
 </html>
